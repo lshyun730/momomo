@@ -1,0 +1,126 @@
+:root {
+    --bg-main-color: #FDC848;
+    --bg-accent-color: #F9AA11;
+    --white: #ffffff;
+    --component-bg-gradient: radial-gradient(linear, #FDC848 0%, #F9AA11 100%);
+    --black: #000000;
+}
+
+@font-face {
+    font-family: 'ocr-a';
+    src: url('../font/enocra-webfont.woff2') format('woff2'),
+        url('../font/enocra-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+    padding-left: 0;
+}
+
+p {
+    color: var(--smokywhite);
+}
+
+label {
+    color: var(--text-accent-color);
+}
+
+* {
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'ocr-a';
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 1.25rem;
+    margin: 0;
+    background: rgb(249, 170, 17);
+    background: linear-gradient(31deg, rgba(249, 170, 17, 1) 0%, rgba(253, 200, 72, 1) 100%);
+}
+
+.app {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    background: rgba(255, 255, 255, .5);
+    text-align: center;
+}
+
+.banner__title {
+    margin: .5em 0 0;
+}
+
+.control-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0 2em;
+    z-index: 1;
+}
+
+.create-button {
+    position: relative;
+    margin: 0 0.5em;
+    text-align: center;
+    user-select: none;
+    padding: .5em 1.2em;
+    text-transform: uppercase;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-family: 'ocr-a';
+    font-weight: 500;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.create-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #000;
+    z-index: -1;
+}
+
+.document {
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, .2);
+    /* Firefox */
+    scrollbar-width: 3px;
+    scrollbar-color: rgba(255, 255, 255, .2);
+    scrollbar-face-color: #F9AA11;
+}
+
+.document::-webkit-scrollbar {
+    /* Safari and Chrome */
+    background-color: rgba(255, 255, 255, .2);
+    width: 3px;
+}
+
+.document::-webkit-scrollbar-thumb {
+    /* Safari and Chrome */
+    background-color: #000
+}
+
+.footer {
+    background: rgba(253, 200, 72, .8);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
