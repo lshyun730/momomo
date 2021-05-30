@@ -1,11 +1,11 @@
-// @path-json can be an object or an array, the first will be loaded directly, the object from the array will be random selected
-/* tsParticles.loadJSON(@dom-id, @path-json, @callback (optional)); */
-const tsParticles = require("tsparticles");
-
-tsParticles.loadJSON("tsparticles", "dist/patticles.json")
-  .then((container) => {
-    console.log("callback - tsparticles config loaded");
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+import { ImageComponent } from './components/page/item/image.js';
+import { PageComponent } from './components/page/page.js';
+class App {
+    constructor(appRoot) {
+        this.page = new PageComponent();
+        this.page.attachTo(appRoot);
+        const image = new ImageComponent('Image', 'http://picsum.photos/600/300', '이미지이미지');
+        image.attachTo(appRoot, 'beforeend');
+    }
+}
+new App(document.querySelector('.document'));
