@@ -136,10 +136,28 @@ body {
 
 .dialog__container {
     display: flex;
+    position: relative;
     flex-direction: column;
-    pad: 0.4em;
+    padding: 1.5em 1em;
     width: 32em;
     background-color: #fff;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5em;
+}
+
+.close {
+    position: absolute;
+    top: .4em;
+    right: 1em;
+    padding: .2rem;
+    font-size: 28px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
 }
 
 .footer {
