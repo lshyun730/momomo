@@ -14,22 +14,29 @@
     font-style: normal;
 }
 
+ul {
+    padding: 0;
+}
+
 li {
     list-style: none;
     padding-left: 0;
 }
 
-p {
-    color: var(--smokywhite);
-}
-
-label {
-    color: var(--text-accent-color);
-}
-
 * {
     outline: 0;
     box-sizing: border-box;
+}
+
+button {
+    background-color: transparent;
+    border: solid 1px;
+    font-family: 'ocr-a';
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
 }
 
 body {
@@ -40,8 +47,8 @@ body {
     overflow: hidden;
     font-size: 1.25rem;
     margin: 0;
-    background: rgb(249, 170, 17);
-    background: linear-gradient(31deg, rgba(249, 170, 17, 1) 0%, rgba(253, 200, 72, 1) 100%);
+    background-image: url(./../assets/bg-yellow.jpg);
+    line-height: 2em
 }
 
 .app {
@@ -79,8 +86,7 @@ body {
     text-transform: uppercase;
     color: #000;
     background-color: #fff;
-    border: 1px solid #000;
-    font-family: 'ocr-a';
+    border: 2px solid #000;
     font-weight: 500;
     font-size: 1.2rem;
     cursor: pointer;
@@ -94,7 +100,7 @@ body {
     left: 3px;
     width: 100%;
     height: 100%;
-    border: 1px solid #000;
+    border: 2px solid #000;
     z-index: -1;
 }
 
@@ -119,6 +125,9 @@ body {
     background-color: #000
 }
 
+
+
+/* -- DIALOG -- */
 .dialog {
     display: flex;
     align-items: center;
@@ -130,29 +139,31 @@ body {
     width: 100%;
     height: 100%;
     font-size: 1.2rem;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .5);
     border: 0;
 }
 
 .dialog__container {
-    display: flex;
     position: relative;
+    display: flex;
     flex-direction: column;
-    padding: 1.5em 1em;
-    width: 32em;
+    padding: 1.8em 1em;
+    width: 28em;
     background-color: #fff;
+    border: 2px solid #000;
 }
 
-.form__container {
+.dialog .form__container {
     display: flex;
     flex-direction: column;
     margin-bottom: .5em;
 }
 
-.close {
+.dialog .close {
     position: absolute;
     top: .4em;
-    right: 1em;
+    right: 1rem;
+    align-self: flex-end;
     padding: .2rem;
     font-size: 28px;
     background-color: transparent;
@@ -160,8 +171,180 @@ body {
     cursor: pointer;
 }
 
+.dialog input,
+.dialog textarea {
+    padding: .5em;
+    margin: .3em 0;
+    border: 2px solid #000;
+}
+
+.dialog__submit {
+    background: #000;
+    color: #fff;
+    border: 0;
+    padding: .6em;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-top: .5em;
+}
+
+
+
+
+
+/* -- PAGE ITEM -- */
+
+
+.page-item {
+    margin: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #000;
+    position: relative;
+}
+
+.page-item__body {
+    width: 100%;
+}
+
+.page-item .page-item__controls {
+    align-self: flex-start;
+}
+
+.page-item .close {
+    border: 0;
+    font-size: 28px;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+
+
+
+/* -- TITLE -- */
+.title {
+    position: relative;
+    font-size: 1.25em;
+    font-weight: normal;
+    margin-bottom: 1.2em;
+}
+
+.title span {
+    z-index: 1;
+    position: relative;
+}
+
+.title::before {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    left: .5em;
+    transform: skewX(-40deg);
+
+}
+
+
+
+
+/* -- IMAGE & VIDEO -- */
+
+.image,
+.video {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.image__holder,
+.video__player {
+    flex: 60% 1 1;
+}
+
+.image__title::before {
+    background-color: #EB4F4F;
+}
+
+.video__title::before {
+    background-color: #2CB48B;
+}
+
+.image__desc,
+.video__desc {
+    flex: 40% 1 1;
+    margin-left: 1.5em;
+}
+
+.image__thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+.video__iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+}
+
+
+
+/* -- NOTE & TODO -- */
+.note,
+.todo {
+    padding: 0.5em 1.5em;
+}
+
+/* .todo input[type="checkbox"] {
+    display: none;
+}
+
+.todo input[type="checkbox"]+.todo-label::before {
+    display: inline-block;
+    content: 'o';
+    font-size: 1.5em;
+}
+
+.todo input[type="checkbox"]+.todo-label:after {
+    position: absolute;
+    left: 3px;
+    top: 19px;
+    content: '●';
+    font-size: .6em;
+    line-height: 0.8;
+    color: #000;
+    transition: all .3s;
+    opacity: 0;
+}
+
+.todo input[type="checkbox"]:checked+.todo-label:after {
+    opacity: 1;
+} */
+
+.todo-label {
+    margin-bottom: 1em;
+    display: inline-block;
+    position: relative;
+}
+
+.note__title::before {
+    background-color: #CC5FBE;
+}
+
+.todo__title::before {
+    background-color: #705FCC;
+}
+
+
+
+
+/* -- FOOTER -- */
 .footer {
-    background: rgba(253, 200, 72, .8);
+    background: rgba(255, 255, 255, .5);
     border-top: 1px solid var(--border-color);
     text-align: center;
 }
