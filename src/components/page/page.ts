@@ -1,14 +1,14 @@
 import { BaseComponent, Component } from '../component.js';
 
 export interface Composable {
-    addChild(child: Component): void
+    addChild(child: Component): void;
 }
 type OnCloseListener = () => void;
 type DragState = 'start' | 'stop' | 'enter' | 'leave';
 type OnDragStateListener<T extends Component> = (target: T, state: DragState) => void;
 type SectionContainerConstructor = {
-    new(): SectionContainer;
-}
+    new (): SectionContainer;
+};
 
 interface SectionContainer extends Component, Composable {
     setOnCloseListner(listener: OnCloseListener): void;
@@ -51,24 +51,22 @@ export class PageItemComponent extends BaseComponent<HTMLElement> implements Sec
     }
 
     onDragStart(_: DragEvent) {
-        this.notifyDragObservers('start')
+        this.notifyDragObservers('start');
         this.element.classList.add('lifted');
     }
 
     onDragEnd(_: DragEvent) {
-        this.notifyDragObservers('stop')
+        this.notifyDragObservers('stop');
         this.element.classList.remove('lifted');
-
     }
 
     onDragEnter(_: DragEvent) {
         this.notifyDragObservers('enter');
         this.element.classList.add('drop-area');
-
     }
 
     onDragLeave(_: DragEvent) {
-        this.notifyDragObservers('leave')
+        this.notifyDragObservers('leave');
         this.element.classList.remove('drop-area');
     }
 
@@ -112,7 +110,7 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
     private dragTarget?: SectionContainer;
 
     constructor(private pageItemConstructor: SectionContainerConstructor) {
-        super('<ul class="page"></ul>')
+        super('<ul class="page"></ul>');
 
         this.element.addEventListener('dragover', (event: DragEvent) => {
             this.onDragOver(event);
@@ -143,8 +141,8 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
 
     addChild(section: Component) {
         const item = new this.pageItemConstructor();
-        item.addChild(section)
-        item.attachTo(this.element, 'beforeend')
+        item.addChild(section);
+        item.attachTo(this.element, 'beforeend');
         item.setOnCloseListner(() => {
             item.removeFrom(this.element);
             this.children.delete(item);
@@ -158,7 +156,7 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
                     break;
                 case 'stop':
                     this.dragTarget = undefined;
-                    this.updateSections('unmute')
+                    this.updateSections('unmute');
                     break;
                 case 'enter':
                     this.dropTarget = target;
@@ -168,7 +166,6 @@ export class PageComponent extends BaseComponent<HTMLUListElement> implements Co
                     break;
                 default:
                     throw new Error('unsupported state!');
-
             }
         });
     }

@@ -7,7 +7,6 @@ export class NoteComponent extends BaseComponent<HTMLElement> {
                 <p class="note__body"></p>
             </section>`);
 
-
         const bodyElement = this.element.querySelector('.note__body')! as HTMLParagraphElement;
         bodyElement.textContent = body;
     }
